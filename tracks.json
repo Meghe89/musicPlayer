@@ -1,7 +1,7 @@
 [
     {
         "url": "./audio/ACDC - Thunderstruck.mp3",
-        "cover": "./cover/cover acdc.jpg",
+        "cover": "./Media/cover/cover_acdc.jpg",
         "artist": "ACDC",
         "title": "Thunderstruck",
         "id": 1

@@ -1,0 +1,60 @@
+body {
+    background-color: black;
+    color: lime;
+}
+
+.pointer {
+    cursor: pointer;
+}
+
+.wrapper {
+    width: 95vw;
+    height: 100vh;
+}
+
+/* .top,
+.center,
+.bottom {
+    border-bottom: 1px solid lime;
+} */
+
+.top {
+    height: 7vh;
+}
+
+.center {
+    height: 75vh;
+}
+
+
+.bottom {
+    height: 17vh;
+}
+
+.progress-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+#bar {
+    border: 1px solid lightgray;
+    height: 6px;
+    width: 80%;
+    border-radius: 6px;
+    position: relative;
+}
+
+#progress {
+    content: '';
+    background-color: lime;
+    position: absolute;
+    height: 6px;
+    left: 0;
+    border-radius: 6px;
+}
+
+/* .commands-container {
+    border: 1px solid red;
+
+} */
