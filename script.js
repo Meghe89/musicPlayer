@@ -50,22 +50,29 @@ function populateTracks(tracks, searchTerm = '') {
     tracks.forEach((track, i) => {
         // Controlla se il titolo della traccia contiene la stringa di ricerca (ignorando maiuscole/minuscole)
         if (track.title.toLowerCase().includes(searchTerm.toLowerCase())) {
-                    const card = document.createElement('div');
-                    card.classList.add('card');
-                    card.setAttribute('data-track', `${track.id}`)
-                    if (i === currentTrack) card.classList.add('playing');
-                    card.innerHTML = `
-            <p class="id">${i + 1}</p>
-            <div class="song-info-container">
-                <img class="playlist-img" src=${track.cover} alt=${track.title}>
-                <div class="info custom-overflow-text">
-                    <p class="title custom-overflow-text font-indie">${track.title}</p>
-                    <p class="author font-orbitron">${track.artist}</p>
+            const card = document.createElement('div');
+            card.classList.add('card');
+            card.setAttribute('data-track', `${track.id}`);
+            if (i === currentTrack) card.classList.add('playing');
+
+            const audio = new Audio(track.url);
+            audio.addEventListener('loadedmetadata', () => {
+                const duration = formatTime(audio.duration);
+                card.querySelector('.time').textContent = duration;
+            });
+
+            card.innerHTML = `
+                <p class="id">${i + 1}</p>
+                <div class="song-info-container">
+                    <img class="playlist-img" src=${track.cover} alt=${track.title}>
+                    <div class="info custom-overflow-text">
+                        <p class="title custom-overflow-text font-indie">${track.title}</p>
+                        <p class="author font-orbitron">${track.artist}</p>
+                    </div>
                 </div>
-            </div>
-            <p class="album"><i data-track="${i}" id="playlist-play-btn" class="fa-solid fa-play tc-main pointer sidebar-play"></i></p>
-            <p class="time">2:40</p>
-        `;
+                <p class="album"><i data-track="${i}" id="playlist-play-btn" class="fa-solid fa-play tc-main pointer sidebar-play"></i></p>
+                <p class="time">...</p>
+            `;
             cardWrapper.appendChild(card);
         }
     });
